@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import Icon from './Icon.jsx'
 import useActiveSection from '../hooks/useActiveSection.js'
-import { navLinks } from '../data/content.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
+import { languages } from '../i18n/translations.js'
 import './Header.css'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
+  const navLinks = t.nav.links
   const activeId = useActiveSection(navLinks.map((link) => link.id))
 
   useEffect(() => {
@@ -31,7 +34,7 @@ export default function Header() {
           NerKod
         </a>
 
-        <nav className="header__nav header__nav--desktop" aria-label="Glavna navigacija">
+        <nav className="header__nav header__nav--desktop" aria-label={t.nav.ariaMain}>
           {navLinks.map((link) => (
             <a
               key={link.id}
@@ -43,13 +46,26 @@ export default function Header() {
           ))}
         </nav>
 
+        <div className="header__lang header__lang--desktop">
+          {languages.map((lng) => (
+            <button
+              key={lng.code}
+              className={language === lng.code ? 'is-active' : ''}
+              onClick={() => setLanguage(lng.code)}
+              aria-pressed={language === lng.code}
+            >
+              {lng.label}
+            </button>
+          ))}
+        </div>
+
         <a href="#kontakt" className="btn btn-primary btn-sm header__cta">
-          Zatraži ponudu
+          {t.nav.cta}
         </a>
 
         <button
           className="header__toggle"
-          aria-label={menuOpen ? 'Zatvori izbornik' : 'Otvori izbornik'}
+          aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
@@ -58,7 +74,7 @@ export default function Header() {
       </div>
 
       <div className={`header__mobile ${menuOpen ? 'is-open' : ''}`}>
-        <nav aria-label="Mobilna navigacija">
+        <nav aria-label={t.nav.ariaMobile}>
           {navLinks.map((link) => (
             <a
               key={link.id}
@@ -70,8 +86,22 @@ export default function Header() {
             </a>
           ))}
         </nav>
+
+        <div className="header__lang">
+          {languages.map((lng) => (
+            <button
+              key={lng.code}
+              className={language === lng.code ? 'is-active' : ''}
+              onClick={() => setLanguage(lng.code)}
+              aria-pressed={language === lng.code}
+            >
+              {lng.label}
+            </button>
+          ))}
+        </div>
+
         <a href="#kontakt" className="btn btn-primary" onClick={() => setMenuOpen(false)}>
-          Zatraži ponudu
+          {t.nav.cta}
         </a>
       </div>
     </header>

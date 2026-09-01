@@ -1,38 +1,38 @@
 import Icon from './Icon.jsx'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './Hero.css'
 
-const badges = [
-  { icon: 'layout', label: 'Moderan dizajn' },
-  { icon: 'search', label: 'SEO spremno' },
-  { icon: 'shield', label: 'Pouzdana podrška' },
-]
-
 export default function Hero() {
+  const { t } = useLanguage()
+  const hero = t.hero
+
   return (
     <section id="pocetna" className="hero">
       <div className="hero__glow" aria-hidden="true" />
       <div className="container hero__inner">
         <div className="hero__content">
-          <span className="pill">Izrada web stranica</span>
+          <span className="pill">{hero.pill}</span>
           <h1>
-            Vaša ideja zaslužuje <span className="hero__accent">web stranicu</span> koja radi posao za vas
+            {hero.titleBefore}
+            <span className="hero__accent">{hero.titleAccent}</span>
+            {hero.titleAfter}
           </h1>
           <p className="hero__lead">
-            Ja sam iza obrta <strong>NerKod</strong> — projektiram i razvijam brze, moderne i
-            responzivne web stranice za obrtnike, male firme i startupe, od prve ideje do
-            lansiranja.
+            {hero.leadBefore}
+            <strong>NerKod</strong>
+            {hero.leadAfter}
           </p>
           <div className="hero__actions">
             <a href="#kontakt" className="btn btn-primary">
-              Zatraži besplatnu ponudu
+              {hero.ctaPrimary}
               <Icon name="arrow" size={18} />
             </a>
             <a href="#reference" className="btn btn-ghost">
-              Pogledaj reference
+              {hero.ctaSecondary}
             </a>
           </div>
           <div className="hero__badges">
-            {badges.map((badge) => (
+            {hero.badges.map((badge) => (
               <div className="hero__badge" key={badge.label}>
                 <Icon name={badge.icon} size={18} />
                 {badge.label}
@@ -52,7 +52,7 @@ export default function Hero() {
               className="hero__graphic"
               viewBox="0 0 320 224"
               role="img"
-              aria-label="Prikaz izrađene web stranice"
+              aria-label={hero.graphicAlt}
             >
               <rect x="0" y="0" width="320" height="224" rx="12" fill="#221b3d" />
 
@@ -93,7 +93,7 @@ export default function Hero() {
           </div>
           <div className="hero__card hero__card--float">
             <Icon name="check" size={18} />
-            <span>Stranica lansirana</span>
+            <span>{hero.floatCard}</span>
           </div>
         </div>
       </div>

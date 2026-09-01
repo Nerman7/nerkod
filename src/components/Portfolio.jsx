@@ -1,19 +1,18 @@
 import SectionHeading from './SectionHeading.jsx'
-import { portfolioItems } from '../data/content.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './Portfolio.css'
 
 export default function Portfolio() {
+  const { t } = useLanguage()
+  const { eyebrow, title, subtitle, items } = t.portfolio
+
   return (
     <section id="reference" className="portfolio">
       <div className="container">
-        <SectionHeading
-          eyebrow="Reference"
-          title="Vrste projekata koje razvijam"
-          subtitle="Portfelj se stalno puni novim projektima — ovo su tipovi rješenja koje mogu izraditi za vaše poslovanje."
-        />
+        <SectionHeading eyebrow={eyebrow} title={title} subtitle={subtitle} />
 
         <div className="portfolio__grid">
-          {portfolioItems.map((item) => (
+          {items.map((item) => (
             <article className="portfolio-card" key={item.title}>
               <div className="portfolio-card__cover">
                 <span>{item.category}</span>

@@ -1,25 +1,24 @@
 import Icon from './Icon.jsx'
 import SectionHeading from './SectionHeading.jsx'
-import { pricingPlans } from '../data/content.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './Pricing.css'
 
 export default function Pricing() {
+  const { t } = useLanguage()
+  const { eyebrow, title, subtitle, plans, popularBadge, note } = t.pricing
+
   return (
     <section id="cijene" className="pricing">
       <div className="container">
-        <SectionHeading
-          eyebrow="Cijene"
-          title="Transparentni paketi, bez skrivenih troškova"
-          subtitle="Orijentacijske cijene za najčešće vrste projekata. Konačna ponuda ovisi o opsegu i funkcionalnostima koje vam trebaju."
-        />
+        <SectionHeading eyebrow={eyebrow} title={title} subtitle={subtitle} />
 
         <div className="pricing__grid">
-          {pricingPlans.map((plan) => (
+          {plans.map((plan) => (
             <div
               className={`pricing-card ${plan.highlighted ? 'pricing-card--highlighted' : ''}`}
               key={plan.name}
             >
-              {plan.highlighted && <span className="pricing-card__badge">Najpopularnije</span>}
+              {plan.highlighted && <span className="pricing-card__badge">{popularBadge}</span>}
               <h3>{plan.name}</h3>
               <p className="pricing-card__description">{plan.description}</p>
               <div className="pricing-card__price">
@@ -44,10 +43,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="pricing__note">
-          Svaki projekt je drugačiji — ako vam ne odgovara nijedan paket, javite se i pripremit ću
-          ponudu skrojenu po mjeri.
-        </p>
+        <p className="pricing__note">{note}</p>
       </div>
     </section>
   )

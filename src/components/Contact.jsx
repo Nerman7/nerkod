@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Icon from './Icon.jsx'
 import SectionHeading from './SectionHeading.jsx'
-import { contactInfo } from '../data/content.js'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './Contact.css'
 
 const initialForm = { name: '', email: '', message: '' }
@@ -9,6 +9,10 @@ const initialForm = { name: '', email: '', message: '' }
 export default function Contact() {
   const [form, setForm] = useState(initialForm)
   const [status, setStatus] = useState('idle')
+  const { t } = useLanguage()
+  const { eyebrow, title, subtitle, emailLabel, phoneLabel, locationLabel, form: formText } =
+    t.contact
+  const contactInfo = t.contactInfo
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -26,32 +30,28 @@ export default function Contact() {
   return (
     <section id="kontakt" className="contact">
       <div className="container">
-        <SectionHeading
-          eyebrow="Kontakt"
-          title="Razgovarajmo o vašem projektu"
-          subtitle="Ispunite formu ili se javite direktno — obično odgovaram u roku od jednog radnog dana."
-        />
+        <SectionHeading eyebrow={eyebrow} title={title} subtitle={subtitle} />
 
         <div className="contact__grid">
           <div className="contact__info">
             <a className="contact__info-item" href={`mailto:${contactInfo.email}`}>
               <Icon name="mail" size={20} />
               <div>
-                <span className="contact__info-label">Email</span>
+                <span className="contact__info-label">{emailLabel}</span>
                 <span>{contactInfo.email}</span>
               </div>
             </a>
             <a className="contact__info-item" href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}>
               <Icon name="phone" size={20} />
               <div>
-                <span className="contact__info-label">Telefon</span>
+                <span className="contact__info-label">{phoneLabel}</span>
                 <span>{contactInfo.phone}</span>
               </div>
             </a>
             <div className="contact__info-item">
               <Icon name="pin" size={20} />
               <div>
-                <span className="contact__info-label">Lokacija</span>
+                <span className="contact__info-label">{locationLabel}</span>
                 <span>{contactInfo.location}</span>
               </div>
             </div>
@@ -68,36 +68,36 @@ export default function Contact() {
 
           <form className="contact__form" onSubmit={handleSubmit}>
             <div className="contact__field">
-              <label htmlFor="name">Ime i prezime</label>
+              <label htmlFor="name">{formText.nameLabel}</label>
               <input
                 id="name"
                 name="name"
                 type="text"
-                placeholder="Vaše ime"
+                placeholder={formText.namePlaceholder}
                 value={form.name}
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="contact__field">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{formText.emailLabel}</label>
               <input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="vas@email.com"
+                placeholder={formText.emailPlaceholder}
                 value={form.email}
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="contact__field">
-              <label htmlFor="message">Poruka</label>
+              <label htmlFor="message">{formText.messageLabel}</label>
               <textarea
                 id="message"
                 name="message"
                 rows={5}
-                placeholder="Recite mi nešto o vašem projektu..."
+                placeholder={formText.messagePlaceholder}
                 value={form.message}
                 onChange={handleChange}
                 required
@@ -105,14 +105,14 @@ export default function Contact() {
             </div>
 
             <button type="submit" className="btn btn-primary contact__submit">
-              Pošalji poruku
+              {formText.submit}
               <Icon name="arrow" size={18} />
             </button>
 
             {status === 'sent' && (
               <p className="contact__success">
                 <Icon name="check" size={16} />
-                Hvala na poruci! Javit ću vam se uskoro na uneseni email.
+                {formText.success}
               </p>
             )}
           </form>
