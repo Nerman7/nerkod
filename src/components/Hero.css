@@ -11,7 +11,7 @@
   transform: translateX(-50%);
   width: 900px;
   height: 620px;
-  background: radial-gradient(closest-side, rgba(155, 77, 255, 0.35), transparent 70%);
+  background: radial-gradient(closest-side, rgba(245, 185, 66, 0.35), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -125,32 +125,10 @@
   background: #4fd18b;
 }
 
-.hero__code-line {
-  height: 12px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, var(--surface-hover), var(--border));
-}
-
-.hero__code-line--1 {
-  width: 85%;
-}
-
-.hero__code-line--2 {
-  width: 60%;
-}
-
-.hero__code-line--3 {
-  width: 72%;
-}
-
-.hero__code-line--4 {
-  width: 45%;
-}
-
 .hero__graphic {
   width: 100%;
-  margin-top: 12px;
-  filter: drop-shadow(0 18px 30px rgba(155, 77, 255, 0.35));
+  border-radius: 12px;
+  filter: drop-shadow(0 18px 30px rgba(245, 185, 66, 0.35));
 }
 
 .hero__card--float {

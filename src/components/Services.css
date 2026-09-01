@@ -18,7 +18,7 @@
 
 .service-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(155, 77, 255, 0.4);
+  border-color: rgba(245, 185, 66, 0.4);
   background: var(--surface-hover);
 }
 

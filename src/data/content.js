@@ -50,7 +50,7 @@ export const services = [
 export const pricingPlans = [
   {
     name: 'Start',
-    price: '300 €',
+    price: '300 KM',
     period: 'od',
     description: 'Za obrtnike i osobne stranice kojima treba jasna online prezentacija.',
     features: [
@@ -65,7 +65,7 @@ export const pricingPlans = [
   },
   {
     name: 'Business',
-    price: '600 €',
+    price: '600 KM',
     period: 'od',
     description: 'Za firme kojima treba više sadržaja, stranica i prostora za rast.',
     features: [
@@ -82,12 +82,12 @@ export const pricingPlans = [
   },
   {
     name: 'Web shop',
-    price: '1.000 €',
+    price: '1.000 KM',
     period: 'od',
     description: 'Za online prodaju proizvoda ili usluga s punom kontrolom nad trgovinom.',
     features: [
       'Neograničen broj proizvoda',
-      'Sustav za online plaćanje',
+      'Sistem za online plaćanje',
       'Upravljanje narudžbama i zalihama',
       'Napredna SEO optimizacija',
       'Kratka edukacija za samostalan rad',
@@ -141,7 +141,7 @@ export const faqItems = [
   {
     question: 'Koliko traje izrada web stranice?',
     answer:
-      'Ovisno o opsegu projekta, izrada obično traje od 2 do 4 tjedna — od dogovora oko sadržaja i dizajna do lansiranja stranice.',
+      'Ovisno o opsegu projekta, izrada obično traje od 1 do 2 sedmice — od dogovora oko sadržaja i dizajna do lansiranja stranice.',
   },
   {
     question: 'Kolika je cijena izrade stranice?',
@@ -151,7 +151,7 @@ export const faqItems = [
   {
     question: 'Mogu li sam/a kasnije uređivati sadržaj stranice?',
     answer:
-      'Da. Po potrebi stranicu izrađujem s jednostavnim sustavom za upravljanje sadržajem, ili vas kratko educiram kako biste samostalno mijenjali tekst i slike.',
+      'Da. Po potrebi stranicu izrađujem s jednostavnim sistemom za upravljanje sadržajem, ili vas kratko educiram kako biste samostalno mijenjali tekst i slike.',
   },
   {
     question: 'Nudite li hosting i domenu?',
@@ -164,7 +164,7 @@ export const faqItems = [
       'Svaki paket uključuje određeni broj besplatnih izmjena nakon lansiranja. Nakon toga dostupno je mjesečno održavanje ili obračun po dogovoru.',
   },
   {
-    question: 'Kako izgleda proces suradnje?',
+    question: 'Kako izgleda proces saradnje?',
     answer:
       'Krećemo kratkim razgovorom o cilju stranice, zatim slijedi prijedlog dizajna, izrada, krug revizija i na kraju lansiranje uz kratku obuku za korištenje.',
   },
@@ -172,6 +172,6 @@ export const faqItems = [
 
 export const contactInfo = {
   email: 'kontakt@nerkod.hr',
-  phone: '+385 91 234 5678',
-  location: 'Hrvatska · rad na daljinu',
+  phone: '+387 62 512 435',
+  location: 'Bosna i Hercegovina · rad na daljinu',
 }

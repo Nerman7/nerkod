@@ -8,14 +8,14 @@
   --text: #faf9ff;
   --text-muted: #c9c1e2;
   --text-dim: #9b91bc;
-  --accent: #ab68ff;
-  --accent-soft: rgba(171, 104, 255, 0.18);
-  --accent-2: #5cc9ff;
-  --gradient: linear-gradient(135deg, #ab68ff 0%, #8578ff 55%, #5cc9ff 100%);
+  --accent: #f5b942;
+  --accent-soft: rgba(245, 185, 66, 0.18);
+  --accent-2: #ffd76b;
+  --gradient: linear-gradient(135deg, #f5b942 0%, #e8833a 55%, #ffd76b 100%);
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
-  --shadow-glow: 0 20px 60px -24px rgba(155, 77, 255, 0.45);
+  --shadow-glow: 0 20px 60px -24px rgba(245, 185, 66, 0.45);
   --shadow-card: 0 12px 32px -18px rgba(0, 0, 0, 0.6);
   --max-width: 1160px;
   --header-height: 76px;
@@ -108,13 +108,13 @@ section {
 
 .btn-primary {
   background: var(--gradient);
-  color: #fff;
+  color: #241a05;
   box-shadow: var(--shadow-glow);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 24px 48px -16px rgba(155, 77, 255, 0.55);
+  box-shadow: 0 24px 48px -16px rgba(245, 185, 66, 0.55);
 }
 
 .btn-ghost {
@@ -140,7 +140,7 @@ section {
   padding: 7px 16px;
   border-radius: 999px;
   background: var(--accent-soft);
-  border: 1px solid rgba(155, 77, 255, 0.35);
+  border: 1px solid rgba(245, 185, 66, 0.35);
   color: var(--accent);
   font-size: 0.82rem;
   font-weight: 600;
