@@ -255,7 +255,9 @@ export const translations = {
         messageLabel: 'Poruka',
         messagePlaceholder: 'Recite mi nešto o vašem projektu...',
         submit: 'Pošalji poruku',
+        sending: 'Slanje...',
         success: 'Hvala na poruci! Javit ću vam se uskoro na uneseni email.',
+        error: 'Nešto je pošlo po zlu. Pokušajte ponovo ili mi pišite direktno na email.',
       },
     },
     footer: {
@@ -527,7 +529,9 @@ export const translations = {
         messageLabel: 'Message',
         messagePlaceholder: 'Tell me a bit about your project...',
         submit: 'Send message',
+        sending: 'Sending...',
         success: "Thanks for your message! I'll get back to you soon at the email you entered.",
+        error: 'Something went wrong. Please try again or email me directly.',
       },
     },
     footer: {

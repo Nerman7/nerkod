@@ -4,6 +4,8 @@ import SectionHeading from './SectionHeading.jsx'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './Contact.css'
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xnpqpwbe'
+
 const initialForm = { name: '', email: '', message: '' }
 
 export default function Contact() {
@@ -19,12 +21,26 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     if (!form.name || !form.email || !form.message) return
 
-    setStatus('sent')
-    setForm(initialForm)
+    setStatus('sending')
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(event.target),
+      })
+
+      if (!response.ok) throw new Error('Formspree request failed')
+
+      setStatus('sent')
+      setForm(initialForm)
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -104,8 +120,12 @@ export default function Contact() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary contact__submit">
-              {formText.submit}
+            <button
+              type="submit"
+              className="btn btn-primary contact__submit"
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? formText.sending : formText.submit}
               <Icon name="arrow" size={18} />
             </button>
 
@@ -113,6 +133,13 @@ export default function Contact() {
               <p className="contact__success">
                 <Icon name="check" size={16} />
                 {formText.success}
+              </p>
+            )}
+
+            {status === 'error' && (
+              <p className="contact__error">
+                <Icon name="alert" size={16} />
+                {formText.error}
               </p>
             )}
           </form>

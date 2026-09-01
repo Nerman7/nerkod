@@ -84,6 +84,13 @@ const paths = {
       <path d="M8 10.5V17M8 7.5v.01M12.5 17v-4a2.2 2.2 0 0 1 4.4 0v4M12.5 10.5V17" />
     </>
   ),
+  alert: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.5v6" />
+      <path d="M12 16.5v.01" strokeWidth="2.4" />
+    </>
+  ),
 }
 
 export default function Icon({ name, size = 22, strokeWidth = 1.7, className = '' }) {
