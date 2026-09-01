@@ -20,14 +20,36 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    if (!menuOpen) return
+
+    const scrollY = window.scrollY
+    const initialHash = window.location.hash
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.left = '0'
+    document.body.style.right = '0'
+    document.body.style.overflow = 'hidden'
+
     return () => {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
       document.body.style.overflow = ''
+
+      const navigatedHash = window.location.hash
+      if (navigatedHash && navigatedHash !== initialHash) {
+        document.querySelector(navigatedHash)?.scrollIntoView()
+      } else {
+        window.scrollTo(0, scrollY)
+      }
     }
   }, [menuOpen])
 
   return (
-    <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
+    <header
+      className={`header ${scrolled ? 'header--scrolled' : ''} ${menuOpen ? 'header--menu-open' : ''}`}
+    >
       <div className="container header__bar">
         <a href="#pocetna" className="header__logo" onClick={() => setMenuOpen(false)}>
           <span className="header__logo-mark">N</span>

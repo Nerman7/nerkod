@@ -16,6 +16,13 @@
   border-bottom-color: var(--border);
 }
 
+/* backdrop-filter creates a new containing block, which would trap the
+   fixed-position .header__mobile overlay inside the header's own box
+   instead of the viewport — drop it while the mobile menu is open. */
+.header--menu-open {
+  backdrop-filter: none;
+}
+
 .header__bar {
   display: flex;
   align-items: center;
