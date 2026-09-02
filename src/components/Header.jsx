@@ -13,7 +13,10 @@ export default function Header() {
   const activeId = useActiveSection(navLinks.map((link) => link.id))
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => {
+      if (document.body.style.position === 'fixed') return
+      setScrolled(window.scrollY > 8)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
